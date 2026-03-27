@@ -3755,7 +3755,6 @@ unsigned long get_swap_orig_data_nrpages(void)
 	 */
 	if (x == 0)
 		x = 1;
-
 	return x;
 }
 
@@ -3766,7 +3765,12 @@ unsigned long get_swap_comp_pool_nrpages(void)
 #if IS_ENABLED(CONFIG_ZSMALLOC)
 	x = global_zone_page_state(NR_ZSPAGES);
 #endif
-
+	/*
+	 * to be safe on arithmetic calcuation in case of either
+	 * !defined(CONFIG_ZSMALLOC) or entirely swap free
+	 */
+	if (x == 0)
+		x = 1;
 	return x;
 }
 
