@@ -4833,7 +4833,7 @@ static void netif_receive_skb_list_internal(struct list_head *head)
 	}
 	list_splice_init(&sublist, head);
 
-	if (static_key_false(&generic_xdp_needed_key)) {
+	if (static_branch_unlikely(&generic_xdp_needed_key)) {
 		preempt_disable();
 		rcu_read_lock();
 		list_for_each_entry_safe(skb, next, head, list) {
