@@ -65,6 +65,12 @@ CONFIG_AUDIT_WATCH=y
 CONFIG_AUDIT_TREE=y
 
 #
+# Wireguard
+#
+CONFIG_WIREGUARD=y
+# CONFIG_WIREGUARD_DEBUG is not set
+
+#
 # KernelSU
 #
 CONFIG_KSU=y
