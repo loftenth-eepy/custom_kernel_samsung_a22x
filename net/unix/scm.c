@@ -64,7 +64,7 @@ void unix_inflight(struct user_struct *user, struct file *fp)
 				        u, atomic_read(&u->inflight));
 		}
 
-		atomic_inc(&u->inflight);
+		atomic_long_inc(&u->inflight);
 		WRITE_ONCE(unix_tot_inflight, unix_tot_inflight + 1);
 	}
 
@@ -93,7 +93,7 @@ void unix_notinflight(struct user_struct *user, struct file *fp)
 			goto out;
 		}
 
-		atomic_dec(&u->inflight);
+		atomic_long_dec(&u->inflight);
 		if (atomic_read(&u->inflight) == 0)
 			list_del_init(&u->link);
 
