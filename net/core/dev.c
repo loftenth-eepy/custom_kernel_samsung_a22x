@@ -4863,7 +4863,7 @@ static void netif_receive_skb_list_internal(struct list_head *head)
 		}
 	}
 #endif
-	__netif_receive_skb(head);
+	__netif_receive_skb_list(head);
 	rcu_read_unlock();
 }
 
